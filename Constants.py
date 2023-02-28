@@ -1,0 +1,3 @@
+ORDERS_QUERY = "SELECT * FROM `Order`"
+
+
