@@ -3,5 +3,5 @@ HOST="localhost",
 USER="root",
 PASSWORD="root",
 DATABASE="CRM"
-FILENAME = "Orders.csv"
+FILENAME = "Orders"
 TESTS = ['A1c', 'Blood Test', 'Urine Test']
