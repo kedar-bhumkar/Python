@@ -1,8 +1,8 @@
 import csv
 
 def generateFile(filename, rows):
-    print(filename)
-    print (rows) 
+    #print(filename)
+    #print (rows) 
     # Open the file in write mode
     with open(filename, 'w') as csvfile:
 
