@@ -1,7 +1,7 @@
 import csv
 
-def generateFile(filename, rows):
-    #print(filename)
+def generateFile(filename, df_test):
+    print(filename)
     #print (rows) 
     # Open the file in write mode
     with open(filename, 'w') as csvfile:
@@ -10,9 +10,8 @@ def generateFile(filename, rows):
         csvwriter = csv.writer(csvfile, delimiter=',')
 
         # Write the column headers to the CSV file
-        csvwriter.writerow(['Order Id', 'Order Date', 'Status', 'LOINC Code', 'Barcode', 'Test Type', 'Vendor', 'PCP Name', 'HICN', 'Date of Birth'])
-
+        csvwriter.writerow(df_test.columns);   
         # Write the rows to the CSV file
-        for row in rows:
+        for row in df_test.values.tolist():
             csvwriter.writerow(row)
     csvfile.close()

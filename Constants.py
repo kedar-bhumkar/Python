@@ -1,7 +1,9 @@
-ORDERS_QUERY = "SELECT * FROM `Order`"
-HOST="localhost",
+ORDERS_QUERY = "SELECT * FROM `Order`" #PODS
+HOST="localhost", 
 USER="root",
 PASSWORD="root",
 DATABASE="CRM"
 FILENAME = "Orders"
 TESTS = ['A1c', 'Blood Test', 'Urine Test']
+IMDB_QUERY="SELECT IMS_ID, HICN FROM IMDB WHERE IMS_ID IN ({})"
+ORDER_DB_CACHE = 'order_db_cache'
