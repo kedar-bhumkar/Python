@@ -19,3 +19,9 @@ def close():
 
 def getEngine():
     return mydb
+
+def getconnection():
+    return mydb.connect()
+
+def writeData(df, table):
+    df.to_sql(name= table, con=mydb, if_exists='append', index=False)
