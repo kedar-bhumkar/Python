@@ -1,0 +1,38 @@
+import Constants as Q
+import DBEngine as DB
+
+#import FileWriterMux as FW
+import FileManager as FW
+import pandas as pd
+import datetime
+import SFManager as SF
+
+pd.options.mode.chained_assignment = None  # default='warn'
+
+df = FW.readFile(Q.LABS_FILE)
+print('df = ' , df)
+
+#filter results with status 'Available'. Ignore all others
+df_only_results =  df[df['Lab_Result_Status'].str.contains('Available')]
+print('df_only_results = ' , df_only_results)
+
+#Get records from Orders_DV_cache
+df_ordersDB = DB.getData(Q.ORDER_DB_CACHE_QUERY)
+print('df_ordersDB = ' , df_ordersDB)
+
+#Merge the data frames together on matching fields to yeild the lab results that need to be written into Salesforce
+df_delta = pd.merge(df_only_results, df_ordersDB, how='left', on=['HICN',  'Test Type', 'Lab_Result_Status'])
+
+print('df_delta cols', df_delta.columns)
+df_final = df_delta[df_delta['Order Date'].notna()]
+print('df_delta = ' , df_final)
+
+#Create a results data file for tracking
+FW.generateFile('Delta.csv', df_final)
+
+SF.insertRecords(df_final)
+
+
+
+
+

@@ -1,0 +1,12 @@
+Member first name,Member Last name,Date of Birth,HICN,Lab_Result_Status,Test Type,Qualitative status,Lab recvd. date,Barcode
+John,Doe,1/1/1990,123-45-6789,Available,AAA,Positive,2/28/2023,BARCODE-0071
+Jane,Doe,5/5/1995,234-56-7890,Awaiting,Blood Test,N/A,3/4/2023,BARCODE-0072
+Bob,Smith,12/31/1985,345-67-8901,Processing,Blood Test,Positive,3/3/2023,BARCODE-0073
+Alice,Johnson,6/15/1988,456-78-9012,Available,Blood Test,N/A,3/3/2023,BARCODE-0074
+Tom,Williams,9/9/1999,567-89-0123,Available,Blood Test,Positive,3/4/2023,BARCODE-005
+Samantha,Taylor,4/20/1992,678-90-1234,Available,Blood Test,Positive,3/4/2023,BARCODE-006
+Michael,Brown,11/25/1978,789-01-2345,Available,asasas,N/A,3/4/2023,BARCODE-007
+Emily,Davis,3/8/1997,890-12-3456,Processing,Blood Test,Positive,3/3/2023,BARCODE-008
+David,Miller,7/12/1994,901-23-4567,Available,Blood Test,Positive,3/1/2023,BARCODE-009
+Olivia,Garcia,2/29/1980,012-34-5678,Available,Blood Test,Positive,3/1/2023,BARCODE-010
+Olivia1,Garcia1,2/29/1980,012-34-56781,Available,Blood Test1,Positive,3/1/2023,BARCODE-0101
