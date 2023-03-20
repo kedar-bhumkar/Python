@@ -18,11 +18,12 @@ print('df_only_results = ' , df_only_results)
 
 #Get records from Orders_DV_cache
 df_ordersDB = DB.getData(Q.ORDER_DB_CACHE_QUERY)
+df_ordersDB = df_ordersDB[~df_ordersDB['Lab_Result_Status'].str.contains('Available')]
 print('df_ordersDB = ' , df_ordersDB)
 
 #Merge the data frames together on matching fields to yeild the lab results that need to be written into Salesforce
-df_delta = pd.merge(df_only_results, df_ordersDB, how='left', on=['HICN',  'Test Type', 'Lab_Result_Status'])
-
+df_delta = pd.merge(df_only_results, df_ordersDB, how='left', on=['HICN',  'Test Type'])
+FW.generateFile('Merge.csv', df_delta)
 print('df_delta cols', df_delta.columns)
 df_final = df_delta[df_delta['Order Date'].notna()]
 print('df_delta = ' , df_final)
