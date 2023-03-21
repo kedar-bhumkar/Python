@@ -37,7 +37,7 @@ def insertRecords(df):
     json_records = {'records':records}
     print('json_records', json_records)
      
-    call = sf_api_call('/services/data/v49.0/composite/tree/Lab__c', method="post", data=json_records)
+    call = webCallout('/services/data/v49.0/composite/tree/Lab__c', method="post", data=json_records)
 
     #sf.Lab__c.create(records)
 
@@ -47,7 +47,7 @@ def insertRecords(df):
 
 
 
-def sf_api_call(action, parameters = {}, method = 'get', data={}):
+def webCallout(action, parameters = {}, method = 'get', data={}):
     headers = {
         'Content-type': 'application/json',
         'Accept-Encoding': 'gzip, deflate, br',
