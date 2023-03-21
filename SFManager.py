@@ -41,6 +41,9 @@ def insertRecords(df):
 
     #sf.Lab__c.create(records)
 
+    #########
+    #  {'records': [{'Member_FirstName__c': 'Tom', 'Member_LastName__c': 'Williams', 'Lab_result_status__c': 'Negative', 'HICN__c': '567-89-0123', 'attributes': {'type': 'Lab__c', 'referenceId': 'ref0'}}, {'Member_FirstName__c': 'Michael', 'Member_LastName__c': 'Brown', 'Lab_result_status__c': 'Positive', 'HICN__c': '789-01-2345', 'attributes': {'type': 'Lab__c', 'referenceId': 'ref1'}}]}
+    #########
 
 
 
