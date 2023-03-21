@@ -16,7 +16,6 @@ def insertRecords(df):
                     'Qualitative status': 'Lab_result_status__c',
                     'HICN': 'HICN__c'
                     }
-
   
 
     # create a list of dictionaries containing the data to be inserted into Salesforce
@@ -26,44 +25,40 @@ def insertRecords(df):
   
     records = df_renamed.to_dict(orient='records')
     print ('records = ', records)
-    # Convert dataframe to JSON format
  
-    attributes_json = {"type": "Lab__c", "referenceId": "ref1"}
+
     # Loop through the records and add the "attributes" field
-    for record in records:
-       record['attributes'] = attributes_json
-       #print ('record', record)
-
+    i=0
+    for record in records:      
+       record['attributes'] = {"type": "Lab__c", "referenceId": "ref"+str( i)}
+       i+=1
+      
  
-    json_records = json.dumps({'records': records})
+    json_records = {'records':records}
     print('json_records', json_records)
-    
-
-
-    
- 
-
+     
+    call = sf_api_call('/services/data/v49.0/composite/tree/Lab__c', method="post", data=json_records)
 
     #sf.Lab__c.create(records)
-    call = sf_api_call('/services/data/v55.0/composite/tree/Lab__c', method="post", data=json_records)
 
 
 
 
-def sf_api_call(action, parameters = {}, method = 'get', data = {}):
-    """
-    Helper function to make calls to Salesforce REST API.
-    Parameters: action (the URL), URL params, method (get, post or patch), data for POST/PATCH.
-    """
+def sf_api_call(action, parameters = {}, method = 'get', data={}):
     headers = {
         'Content-type': 'application/json',
-        'Accept-Encoding': 'gzip',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Accept':'*/*',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
         'Authorization': 'Bearer %s' % access_token
     }
+   
     if method == 'get':
         r = requests.request(method, instance_url+action, headers=headers, params=parameters, timeout=30)
     elif method in ['post', 'patch']:
         r = requests.request(method, instance_url+action, headers=headers, json=data, params=parameters, timeout=10)
+        #print(json.dumps(r))
     else:
         # other methods not implemented in this example
         raise ValueError('Method should be get or post or patch.')
